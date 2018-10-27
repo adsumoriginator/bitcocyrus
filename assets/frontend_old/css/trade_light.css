@@ -1,0 +1,409 @@
+@charset "utf-8";
+/* CSS Document */
+
+.trade_sec {
+	background: #fff;
+}
+.trade_tit {
+	margin:20px 0px 0px 0px;
+	display: inline-block;
+	width: 100%;
+}
+.trade_tit h3 {
+	font-size: 20px;
+	color: #4a4a4a;
+	font-weight: normal;
+	margin: 0px 0px;
+	padding-top: 10px;
+}
+.trade_tit h3 span {
+	font-size: 15px;
+	color: #1a4683;
+	font-weight: 700;
+	margin: 0px 0px;
+	display: block;
+}
+.trade_tit ul {
+	margin: 0;
+	padding: 0;
+	border: 1px #edecec solid;
+	padding: 10px;
+}
+.trade_tit ul li {
+	list-style: none;
+	font-size: 14px;
+	color: #4a4a4a;
+	text-align: center;
+	padding: 0px 12px;
+	position: relative;
+}
+.trade_tit ul li span {
+	font-size: 14px;
+	color: #1a4683;
+	display: block;
+}
+.trade_tit ul li:after {
+	position: absolute;
+	content: "";
+	background: #edecec;
+	top: -10px;
+	right: 0;
+	width: 1px;
+	height: 60px;
+}
+.trade_tit ul li:last-child:after {
+	display: none;
+}
+.hr_volume {
+	font-size: 12px;
+	color: #1a4683;
+	font-weight: normal;
+	text-align: right;
+	padding: 10px 0px;
+}
+.hr_volume span {
+	font-size: 12px;
+	color: #001007;
+	font-weight: 700;
+	margin-right: 20px;
+}
+.tr_graph {
+	margin: 0px 0  20px 0;
+}
+.last_trade {
+	background: #061831;
+}
+.last_bx {
+	padding: 5px;
+}
+.last_bx ul {
+	margin: 0;
+	padding: 0;
+}
+.last_bx ul li {
+	list-style: none;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0 8px 0 0px;
+	position:relative;
+}
+.last_bx ul li:first-child:after{
+	position:absolute;
+	content:"";
+	top:-5px;
+	right:0;
+	background:#1a4581;
+	width:1px;
+	height:50px;}
+
+.last_bx ul li span {
+	display: block;
+}
+.last_bx ul li a {
+	font-size: 12px;
+	color: #fff;
+}
+.last_bx ul li a img {
+    position: relative;
+    top: -3px;
+    margin-left: 5px;
+}
+
+.mar_tit {
+	background: #48c0ef;
+	padding:5px;
+}
+.mar_tit h3 {
+	font-size: 14px;
+	color: #fff;
+	line-height: 30px;
+	margin: 0;
+}
+.mar_tit .form-control {
+	display: block;
+	width: 100%;
+ padding: .375rem .75rem;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #222;
+	background-color: #fff;
+	background-image: none;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+ border-radius: .25rem;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	height: 28px;
+}
+.mar_tit .custom-control {
+	margin-bottom: 0;
+	font-size: 12px;
+	color: #fff;
+	line-height: 26px;
+	padding-left: 0.9rem;
+}
+.mar_tit .custom-control i {
+	margin:0px 3px 0px 3px;
+	font-size: 13px;
+	color: #fff;
+}
+.mar_tit .custom-control-indicator {
+	position: absolute;
+ top: .35rem;
+ background:#fff;
+}
+
+.mar_tit .custom-control {
+   
+    margin-right: 0.1rem;
+}
+.coin_tab {
+	margin: 0px 0;
+}
+.coin_tab .nav-tabs {
+	border-bottom: 3px solid #fe4249;
+}
+.coin_tab .nav-tabs .nav-link {
+	border: 0;
+	border-radius: 0px;
+	color: #fff;
+	font-size: 14px;
+	text-transform: capitalize;
+	position: relative;
+}
+.coin_tab .nav-link {
+	display: block;
+ padding: .7rem 1rem;
+}
+.coin_tab .nav-tabs .nav-item.show .nav-link, .coin_tab .nav-tabs .nav-link.active {
+	color: #fff;
+	background: #fe4249;
+	border-color: 0;
+}
+.coin_table {
+}
+.coin_table .table th {
+	border-bottom: 0px solid #dee2e6;
+	background: #1a4581;
+}
+.coin_table .table td, .coin_table .table th {
+ padding: .4rem .35rem;
+	vertical-align: top;
+	border-top: 0px solid #dee2e6;
+	font-size: 13px;
+	color: #fff;
+	font-weight: normal;
+}
+.coin_table tr:nth-child(2n+1) {
+	background: #082c5e !important;
+}
+.coin_table .table i {
+	color: #fff;
+}
+.notify {
+	background: #fff;
+	border: 1px #1a4581 solid;
+	margin: 20px 0;
+}
+.notify h3 {
+	background: #1a4581;
+	color: #fff;
+	padding: 10px;
+	font-size: 14px;
+	margin: 0;
+}
+.notify h3 i{
+	color: #48c0ef;
+	padding:0px 10px 0px 0px;
+	font-size: 16px;
+	margin: 0;
+}
+
+.note_bx {
+	padding: 15px;
+	border-bottom: #48c0ef 1px solid;
+}
+.note_bx p {
+	color: #4a4a4a;
+	font-size: 14px;
+	margin-bottom: 0;
+}
+.order_frm {
+	background: #e0f4fc;
+	margin: 0px 0px 20px 0px;
+}
+.order_frm h3 {
+	font-size: 15px;
+	color: #1a4581;
+	margin-bottom: 0;
+	border-bottom: 1px #1a4581 solid;
+	padding: 10px;
+	text-transform: uppercase;
+}
+.o_frm {
+	padding: 15px;
+}
+.o_frm .col-form-label {
+ padding-top: calc(.375rem + 1px);
+ padding-bottom: calc(.375rem + 1px);
+	margin-bottom: 0;
+	line-height: 1.5;
+	font-size: 14px;
+	color: #4a4a4a;
+}
+.o_frm .form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.o_frm .col-form-label span {
+	font-size: 12px;
+	color: #4a4a4a;
+}
+.buy_btn {
+	width: 125px;
+	height: 40px;
+	background: #48c0ef;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	border: 0;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.buy_btn:hover {
+	background: #0880af;
+	color: #fff;
+}
+.sel_btn {
+	width: 125px;
+	height: 40px;
+	background: #fe4249;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	border: 0;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.sel_btn:hover {
+	background: #c21b21;
+	color: #fff;
+}
+
+.sell_order{ border:1px #edecec solid; background:#f5f5f5; margin-bottom:20px;}
+
+.sell_order h3{ font-weight:700; color:#363636; font-size:15px; padding:10px; text-transform:uppercase;}
+
+.sell_order h3 img{ margin-right:10px;}
+
+.sel_table{ background:#e9f2f1; padding-right:10px;}
+
+
+.sel_table th{ background:#e9f2f1; font-size:14px; color:#1a4581; padding:10px; font-weight:normal; text-align:center; }
+ 
+.sel_table td{ font-size:14px; color:#2b2b2b; padding:5px 10px; text-align:center; }
+
+.sel_table tr:nth-child(2n+1) {
+    background: #eeeeee;
+}
+
+.order_tab table{margin-bottom:0; background:#fff; }
+
+.order_tab thead, .order_tab tbody {
+    display: block;
+}
+.order_tab td, .order_tab th {
+    height: 20px;
+    width:161px;
+}
+
+.order_scroll {
+    overflow: hidden;
+	height:364px;}
+   
+.orderac_tab table{margin-bottom:0; background:#fff; }
+
+.orderac_tab thead, .orderac_tab tbody {
+    display: block;
+}
+.orderac_tab td, .orderac_tab th {
+    height: 20px;
+    width:161px;
+}
+   
+ .orderac_tab td:nth-child(2), .orderac_tab th:nth-child(2) {
+    height: 20px;
+    width:202px;
+}  
+
+.market{ margin-bottom:20px;}
+
+.market h3{ font-size:15px; color:#363636; text-align:center; }
+
+.mytrade_tab{margin-bottom: 40px;
+border: 1px #ddd solid;
+padding: 10px 0px 10px 0px;}
+
+.mytrade_tab .nav-link {
+	display: block;
+	padding: 0rem 1.5rem 1rem 1.5rem;
+}
+.mytrade_tab .nav-tabs {
+	border-bottom: 0px solid #ddd;
+}
+.mytrade_tab .nav-tabs .nav-link {
+	border: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	color: #4a4a4a;
+	font-size: 15px;
+	font-weight: 700;
+	text-transform: capitalize;
+	position: relative;
+}
+.mytrade_tab .nav-tabs .nav-item.show .nav-link, .mytrade_tab .nav-tabs .nav-link.active {
+	color: #1a4581;
+	background: none;
+	border-color: #ddd #ddd #fff;
+}
+.mytrade_tab .nav-tabs .nav-link.active:after {
+	background: #1a4581;
+	height: 2px;
+	width: 50px;
+	left: 0;
+	right: 0;
+	margin-right: auto;
+	margin-left: auto;
+	position: absolute;
+	content: "";
+	bottom: 5px;
+}
+.main_innerpage{
+	margin-top:72px;
+	background:#fff;
+}
+
+.cog_ic{color: #fff;
+	font-size: 14px;
+	line-height: 40px;
+	position: relative;
+	right: -37px;}
+
+.cog_ic a{color:#fff;}
+
+.ptr_lft{ padding-left:0px;}
+
+.ptr_rt{ padding-right:0px;}
+
+

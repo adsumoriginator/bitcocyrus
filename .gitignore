@@ -1,0 +1,6 @@
+.htaccess
+application/config/database.php
+gallery/*.*
+uploads/*.*
+uploads/kyc/*.*
+uploads/proof/*.*

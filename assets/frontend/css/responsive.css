@@ -1,0 +1,194 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+@media (min-width:310px) and (max-width:767px) {
+	.coin_table .table td, .coin_table .table th {
+    padding: .4rem .35rem;
+    vertical-align: top;
+    border-top: 0px solid #dee2e6;
+    font-size: 11px;
+    color: #fff;
+    font-weight: normal;
+}
+.coin_tab .nav-link {
+    display: block;
+    padding: .7rem 0.5rem;
+}
+.coin_tab .nav-tabs .nav-link {
+    border: 0;
+    border-radius: 0px;
+    color: #fff;
+    font-size: 13px;
+    text-transform: capitalize;
+    position: relative;
+}	
+	.trade_tit ul {
+    margin: 0;
+    padding: 0;
+    border: 1px #edecec solid;
+    padding: 10px;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+.order_scroll {
+    overflow: hidden;
+        overflow-x: hidden;
+    height: auto!important;
+}	
+.order_tab td, .order_tab th {
+    height: 32px!important;
+    width: auto!important;
+    text-align: left;
+}
+.sell_order h3 {
+    padding: 0px 10px!important;
+	margin-top: 5px;
+}
+.buy_order h3 {
+     padding: 0px 10px!important;
+	margin-top: 5px;
+}
+.sell_amnt {
+    float: left;
+    padding: 0px 8px;
+    font-size: 14px;
+	margin-bottom: 7px;
+}
+.ver_bx .table td {
+    padding: .25rem .75rem;
+    vertical-align: top;
+    border-top: 0px solid #e9ecef;
+    font-size: 14px;
+    color: #4a4a4a;
+    white-space: nowrap;
+}
+.ptr_lft {
+    padding-left: 15px!important;
+}.sell_order11 h3 {
+    text-transform: capitalize;
+
+}
+.ptr_rt {
+    padding-right: 15px!important;
+}	 
+.sel_table th {
+    background: #e9f2f1;
+    font-size: 14px;
+    color: #1a4581;
+    padding: 5px 10px !important;
+    font-weight: normal;
+    text-align: center;
+}
+.order_scroll {
+    overflow: hidden;
+        overflow-x: hidden;
+    height: auto;
+}
+.order_tab td, .order_tab th {
+    height: 31px;
+    width: 161px;
+}	
+.orderac_tab td, .orderac_tab th {
+    height: auto !important;
+    width: auto !important;
+}	
+.pu-0{
+    padding-left: 15px !important;
+}	
+.ver_bx h3 {
+    font-size: 13px;
+    text-align: center;
+}
+.ptr_lft{ padding-left:15px;}
+
+.ptr_rt{ padding-right:15px;}
+
+.login_box {
+    width: 100% !important;
+}
+.captcha_box.captcha_div { position:relative; left:0px}
+}
+
+@media (min-width:310px) and (max-width:640px) {
+.pro_tit h3 span {
+    float: left;
+}
+.captcha_box.captcha_div { position:relative; left:0px}
+}
+
+@media (min-width:310px) and (max-width:767px) {
+.navbar-collapse{ background:#1a4581}
+
+.navbar-brand img {
+    width: 175px;
+}
+.captcha_box.captcha_div { position:relative; left:0px}
+}
+
+
+
+ @media only screen and (max-width: 800px) {
+	
+	#flip-scroll .cf:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+	#flip-scroll * html .cf { zoom: 1; }
+	#flip-scroll *:first-child+html .cf { zoom: 1; }
+	
+	#flip-scroll table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+ 
+	#flip-scroll th,
+	#flip-scroll td { margin: 0; vertical-align: top; }
+	#flip-scroll th { text-align: left; }
+	
+	#flip-scroll table { display: block; position: relative; width: 100%; }
+	#flip-scroll thead { display: block; float: left; }
+	#flip-scroll tbody { display: block; width: auto; position: relative; overflow-x: auto; white-space: nowrap; }
+	#flip-scroll thead tr { display: block; }
+	#flip-scroll th { display: block; text-align: right; }
+	#flip-scroll tbody tr { display: inline-block; vertical-align: top; }
+	#flip-scroll td { display: block; min-height: 1.25em; text-align: left; }
+ 
+ 
+	/* sort out borders */
+ 
+	#flip-scroll th { border-bottom: 0; border-left: 0; }
+	#flip-scroll td { border-left: 0; border-right: 0; border-bottom: 0; }
+	#flip-scroll tbody tr { border-left: 1px solid #babcbf; }
+	#flip-scroll th:last-child,
+	#flip-scroll td:last-child { border-bottom: 1px solid #babcbf; }
+	
+	.order_tab td, .order_tab th {
+    height: 25px;
+    width:auto;
+}
+
+.order_scroll {
+    overflow: hidden;
+	height:auto;}
+   
+.captcha_box.captcha_div { position:relative; left:0px}
+}
+
+
+@media (min-width:1024px) and (max-width:1200px) {
+.coin_div span {
+    color: #eef8ee;
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    margin: 5px 0px 0;
+}
+
+.coin_div {
+    color: #eef8ee;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    min-height: 68px;
+    padding-top: 13px;
+    line-height: 17px;
+}
+.captcha_box.captcha_div { position:relative; left:0px}
+}
+
