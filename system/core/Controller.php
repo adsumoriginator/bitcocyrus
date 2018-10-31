@@ -84,7 +84,7 @@ class CI_Controller {
 			//echo "<pre>";
 			//print_r($_SERVER);die;
 			$url = $_SERVER['PATH_INFO'];
-			if($url=='/YfQa6hmtE8a3G2Z6Ssuf' || $url=='/yfQa6hmtE8a3G2Z6Ssuf' || $url=='/bitcowallet/authentication'|| $url=='/bitcowallet/Authentication')
+			if($url=='/bitcowallet/authentication'|| $url=='/bitcowallet/Authentication')
 			{
 				
 				$ip_address = $_SERVER['REMOTE_ADDR'];
