@@ -86,13 +86,13 @@ class CI_Controller {
 			$url = $_SERVER['PATH_INFO'];
 			if($url=='/YfQa6hmtE8a3G2Z6Ssuf' || $url=='/yfQa6hmtE8a3G2Z6Ssuf' || $url=='/bitcowallet/authentication'|| $url=='/bitcowallet/Authentication')
 			{
+				
 				$ip_address = $_SERVER['REMOTE_ADDR'];
-				//if($ip_address!='103.81.211.67'&&$ip_address!='117.232.68.203'&&$ip_address!='103.87.104.181')
-				/*if($ip_address!='103.81.211.67' )
+				if($ip_address!='103.81.211.67' )
 				{
 					header("location: ".$base_url.'pagehandler/under');
 					exit;
-				}*/
+				}
 			}
 		}
 	}
