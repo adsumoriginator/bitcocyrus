@@ -649,6 +649,7 @@ function insep_encode($value){
 
 
 	 }else if ($currency_symbol == "ETH") {
+	 	
 
 						$data=get_cn_data("ETH");
 		 $bitcoin_portnumber = insep_decode($data['port']);		

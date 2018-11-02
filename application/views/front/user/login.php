@@ -36,14 +36,20 @@
 						<input type="password" class="form-control" name="password" placeholder="Enter password">
 					</div>
 
-					<div class="toggle-button toggle-button--vesi robot">
-						<input id="toggleButton5" type="checkbox" name="captcha_check">
+					<div class="toggle-button robot">
+						<label id="captcha-error" class="error" for="captcha" style="display: inline-block;"></label>
+						 <div class="g-recaptcha" data-callback="recaptchaCallback"  data-sitekey="6Lc2NG8UAAAAAGYBWICrLg7-8Tv5mMiIx8aAXwrZ" required >
+                            </div>
+                            <p id="recaptcha"></p>
+
+                            <input id="toggleButton5" type="hideen" name="captcha_check">
+						<!--<input id="toggleButton5" type="checkbox" name="captcha_check">
 						<label for="toggleButton5" data-on-text="Verified"  data-off-text="i am not robot"></label>
-						<div class="toggle-button__icon"></div>
+						<div class="toggle-button__icon"></div>-->
 					</div>
 
 					<label id="robot-error" class="error"  style="display:none"></label>
-					<div class="form-group row captcha_box captcha_div logCaptcha" style="display:none">
+					<!--<div class="form-group row captcha_box captcha_div logCaptcha" style="display:none">
 						<label id="captcha" class="col-lg-3 p-0 captcha_no"><img id="login_cap_img" src="<?php echo base_url()?>home/login_captcha" style="padding: 10px;"></label>
 						<div class="col-lg-6 pad-lft">
 							<div class="captcha">
@@ -56,7 +62,7 @@
 								<i class="fa fa-refresh"></i>
 							</div>
 						</div>
-					</div>
+					</div>-->
 
 					<div class="clearfix"></div>
 					<div class="box_list">
@@ -124,4 +130,17 @@
     background: #1C3049;
 }
 </style>
+<script type="text/javascript" language="javascript">
+
+function recaptchaCallback() {
+
+	var captcha_response = grecaptcha.getResponse();
+
+	captcha_response = captcha_response.length;
+
+	$("#toggleButton5").val(captcha_response);
+
+
+}
+</script>
 <?php $this->load->view('front/basic/footer');?>

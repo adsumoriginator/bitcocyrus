@@ -252,12 +252,12 @@ class Home extends CI_Controller {
 
 	function verify_home(){
 
-		 $captcha_val=$this->input->post("captcha");
+		 $captcha_val=$this->input->post("captcha_response");
 	
-		 $sessionval=$this->session->userdata("home_captcha");
+		 //$sessionval=$this->session->userdata("home_captcha");
 
 
-		if($captcha_val==$sessionval){
+		if($captcha_val !=0){
 
 			
 	  		$userdata["robot_verify"]	=1;
@@ -301,7 +301,7 @@ class Home extends CI_Controller {
 
 	function generate_otp(){
 
-		 $captcha=$this->input->post("captcha");
+		 $captcha=$this->input->post("g-recaptcha-response");
         $secaptcha=$this->session->userdata("reg_captcha");
 		if($captcha!=$secaptcha){
 					
@@ -603,7 +603,7 @@ function login_notification($email=""){
         $this->load->library('form_validation'); 
         $this->form_validation->set_rules('username', 'Username', 'required');  
 		$this->form_validation->set_rules('password', 'password', 'required');
-		$this->form_validation->set_rules('captcha', 'Captcha', 'required');
+		//$this->form_validation->set_rules('g-recaptcha-response', 'g-recaptcha-response', 'required');
 	
         if ($this->form_validation->run() == FALSE)
          {
@@ -617,9 +617,9 @@ function login_notification($email=""){
 			$user_agent =  $_SERVER['HTTP_USER_AGENT'];
 			$os=$this->getOS($user_agent);
 			$browser=$this->getBrowser($user_agent);	
-   	       	$captcha=$this->input->post("captcha");
+   	       	$captcha=$this->input->post("g-recaptcha-response");
          	$captcha_val=$this->session->userdata("login_captcha");
-         	if($captcha_val==$captcha){
+         	if($captcha !=''){
 
          		$username=$this->input->post("username");
          		$password=insep_encode($this->input->post("password"));

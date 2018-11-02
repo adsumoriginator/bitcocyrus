@@ -42,10 +42,10 @@ if(!$this->session->userdata("home_numeric_verify")){
 <link rel="stylesheet" href="assets/frontend/css/owl.theme.default.min.css">
 
 
-
 <!-- font css -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
 <link href="assets/frontend/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
 
 <style type="text/css">
   .error {
@@ -79,7 +79,7 @@ text-align: center;
     margin-left: auto;
     margin-right: auto;
     right: 0;
-    left: 0;
+    left: 42%;
     top: 30px;
 }
 .toggle-button {
@@ -119,11 +119,11 @@ text-align: center;
         <p>Please Complete the security check to proceed</p>
       </div>
       <div class="oMSMid">
-        <div class="toggle-button toggle-button--vesi robot">
+        <!--<div class="toggle-button toggle-button--vesi robot">
                 <input id="toggleButton5" type="checkbox">
                 <label for="toggleButton5" data-on-text="Verified" data-off-text="i am not robot"></label>
                 <div class="toggle-button__icon"></div>
-            </div>
+            </div>-->
 
 
     <div class="numeric_captcha">
@@ -139,21 +139,25 @@ text-align: center;
   </div>
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
 
+ <div class="g-recaptcha" data-callback="recaptchaCallback"  data-sitekey="6Lc2NG8UAAAAAGYBWICrLg7-8Tv5mMiIx8aAXwrZ" required >
+                            </div>
+                            <p id="recaptcha"></p>
+
     <?php
       
-    $array=array("id"=>"captcha_form","name"=>"captcha_form");
-    echo form_open("home/",$array);
+    //$array=array("id"=>"captcha_form","name"=>"captcha_form");
+    //echo form_open("home/",$array);
     ?>
 
-    <div class="full_stretch_btn captcha_div" style="display:none">
+    <!--<div class="full_stretch_btn captcha_div" style="display:none">
 
-    <img src="<?php echo base_url()?>home/home_captcha">
+    <img src="<?php //echo base_url()?>home/home_captcha">
     <input type="text" name="captcha" id="captcha">  
 
      <button name="captcha_button" id="captcha_button">Verify</button>
      <label id="captcha-error" style="display:none;" class="error" for="captcha"></label>
     </div>
-     </form>
+     </form>-->
   </div>
 
 </div>
@@ -178,6 +182,80 @@ text-align: center;
 
       <script>
 
+        function recaptchaCallback() {
+   // $('#submitBtn').removeAttr('disabled');
+base_url = '<?=base_url()?>';
+var captcha_response = grecaptcha.getResponse();
+
+var url= base_url+"home/verify_home";
+       $.ajax({
+            url: url,
+            type: "post",
+            data: {'captcha_response': captcha_response},
+                       
+            success: function(response) {
+                 
+                if(response=="invalid"){
+                 
+                    //$('#captcha_button').attr('disabled',false);
+                    //$('#captcha_button').html('Verify');
+                  $(".danger").show();
+                       
+                   $(".danger").html("Invalid captcha, Please enter correct value");
+                      setTimeout(function(){
+                          $(".danger").hide('');                                            
+                                           
+                      
+                          },2000);
+
+
+                }else{
+               
+
+                  //$('#toggleButton5').attr('readonly',true);
+                 // $('#toggleButton5').attr('disabled', true);
+
+                  // $(".robot").show();
+                  $(".success").show(); 
+
+                 // $(".captcha_div").hide();
+                // $(".robot").show();
+                $(".success").html("Verification success, Now redirecting Please wait..");
+                      setTimeout(function(){
+
+
+                          $(".success").hide(); 
+                           location.reload();                         
+                                           
+                      
+                          },2000);
+                } 
+
+                        
+       
+                // $('#answers').html(response);
+            }            
+        }); 
+
+
+/*alert(captcha_response.length);
+if(captcha_response.length == 0)
+{
+    alert("Please checkmark Captcha!");
+    // Captcha is not Passed
+    return false;
+}
+else
+{
+    location.reload();                         
+    // Captcha is Passed
+    return true;
+    
+}*/
+
+};
+
+
         $('#captcha_form').validate({
  
        rules: {
@@ -201,6 +279,7 @@ text-align: center;
         $('#captcha_button').attr('disabled',true);                
         var postdata = $("#captcha_form").serialize();
         var url='<?php base_url()?>home/verify_home';
+        alert(url);
       
        $.ajax({
             url: url,

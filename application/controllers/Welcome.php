@@ -20,8 +20,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		echo insep_encode('18084');
+		//echo insep_encode('18084');
 		//echo insep_decode('FWN_KS1ZP-uCQ754TuOu3kTSnJHMI8AWD43cCuI9Cg0');
 		//$this->load->view('welcome_message');
+
+		echo '<pre>'; print_r($this->session->all_userdata());exit;
 	}
 }

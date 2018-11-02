@@ -36,6 +36,7 @@
 
     <!-- Extra plugin css -->
     <link href="<?php echo base_url() ?>assets/frontend/vendors/nice-select/nice-select.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
 
     <!--<link href="css/style.css" rel="stylesheet">-->
   

@@ -56,18 +56,32 @@
 				<label class="form-check-label" for="exampleCheck1">I accepts the <a href="<?php echo base_url() ?>cms/terms">Terms & Conditions</a></label>
 			    <label id="terms-error" class="error" for="terms" style="display:none"></label>
 			  </div>
+
+        <div class="toggle-button  robot">
+            <label id="captcha-error" class="error" for="captcha" style="display: inline-block;"></label>
+             <label id="robot-error" class="error"  style="display:none"></label>
+             <div class="g-recaptcha" data-callback="recaptchaCallback"  data-sitekey="6Lc2NG8UAAAAAGYBWICrLg7-8Tv5mMiIx8aAXwrZ" required >
+                            </div>
+                            <p id="recaptcha"></p>
+
+                            <input id="toggleButton5" type="hideen" name="captcha_check">
+            <!--<input id="toggleButton5" type="checkbox" name="captcha_check">
+            <label for="toggleButton5" data-on-text="Verified"  data-off-text="i am not robot"></label>
+            <div class="toggle-button__icon"></div>-->
+          </div>
+         
   
-			  <div class="toggle-button toggle-button--vesi robot">
+			  <!--<div class="toggle-button toggle-button--vesi robot">
                 <input id="toggleButton5" type="checkbox" name="captcha_check">
                 <label for="toggleButton5" data-on-text="Verified"  data-off-text="i am not robot"></label>
                 <div class="toggle-button__icon"></div>
-                <label id="robot-error" class="error"  style="display:none"></label>
-              </div>
+                
+        </div>-->
 			  <label id="captcha_check-error" class="error"  style="display:none"></label>
-              <div class="form-group row captcha_box reg_captcha captcha_div captcha_list regCaptcha" style="display:none">
+        <!--<div class="form-group row captcha_box reg_captcha captcha_div captcha_list regCaptcha" style="display:none">
 				<label  class="col-lg-3 p-0 captcha_no">
-                <img src="<?php echo base_url() ?>home/captcha" id="register_cap_img" style="padding: 10px;"></label>
-                <div class="col-lg-6 pad-lft">
+                <img src="<?php //echo base_url() ?>home/captcha" id="register_cap_img" style="padding: 10px;"></label>
+        <div class="col-lg-6 pad-lft">
 					<div class="captcha">
 						<input type="text" class="form-control" name="captcha"  id="captcha"/>
 						<label style="display:none;" id="captcha-error" class="error" for="captcha">Please enter captcha</label>
@@ -79,8 +93,8 @@
 						  <i class="fa fa-refresh"></i>
 						</div>
 					</div>
-                </div>
-			  </div>
+      </div>
+			  </div>-->
               <div class="clearfix"></div>
               <div class="box_list">
 				<div class="login_btn1">
@@ -167,5 +181,18 @@
     background: #1C3049;
 }
 </style>
+<script type="text/javascript" language="javascript">
+
+function recaptchaCallback() {
+
+  var captcha_response = grecaptcha.getResponse();
+
+  captcha_response = captcha_response.length;
+
+  $("#toggleButton5").val(captcha_response);
+
+
+}
+</script>
 <?php $this->load->view('front/basic/footer');?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js" ></script>
