@@ -154,7 +154,9 @@ $('#register').validate({
 
         },
     submitHandler: function(form) {
-        if($("#toggleButton5").prop('checked') == true){
+        //if($("#toggleButton5").prop('checked') == true){
+            if($("#toggleButton5").val() != ''){
+
 
                 }else{
 
@@ -335,7 +337,8 @@ $('#login_form').validate({
         },
     submitHandler: function(form) {
 
-if($("#toggleButton5").prop('checked') == true){
+//if($("#toggleButton5").prop('checked') == true){
+if($("#toggleButton5").val() != ''){
 
 
  
@@ -345,11 +348,11 @@ if($("#toggleButton5").prop('checked') == true){
    $("#robot-error").html("Please verify captcha");
    $("#robot-error").show();
    return false;
-}        $('#login_button').html('');
-        $('#login_button').html('<i class="fa fa-spinner fa-spin"></i> Please Wait..');
-        $('#login_button').attr('disabled',true);                
+}     //  $('#login_button').html('');
+       // $('#login_button').html('<i class="fa fa-spinner fa-spin"></i> Please Wait..');
+       // $('#login_button').attr('disabled',true);                
         var postdata = $("#login_form").serialize();
-      
+     
        $.ajax({
             url: base_url+"home/login_check",
             type: "post",
@@ -364,8 +367,6 @@ if($("#toggleButton5").prop('checked') == true){
                 //$("#captcha").attr("src", img_url);
                 
                  //$('.captcha').attr('src',img_url);
-
-
 
                 if(response=="success"){
                      $('#login_button').attr('disabled',false);
@@ -603,7 +604,10 @@ $('#forgot_form').validate({
         },
     submitHandler: function(form) {
 
-        if($("#toggleButton5").prop('checked') == true){
+        //if($("#toggleButton5").prop('checked') == true){
+
+         if($("#toggleButton5").val() != ''){
+            
           }else{
 
            $("#robot-error").html("Please verify captcha");
