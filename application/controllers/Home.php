@@ -57,7 +57,6 @@ class Home extends CI_Controller {
 	  $userdata["robot_verify"]	=1;
 	  $userdata["home_numeric_verify"]	="verified";
 
-	  
 	  $this->session->set_userdata($userdata);
 	  echo "success";		
 
@@ -255,9 +254,8 @@ class Home extends CI_Controller {
 		 $captcha_val=$this->input->post("captcha_response");
 	
 		 //$sessionval=$this->session->userdata("home_captcha");
-
-
-		if($captcha_val !=0){
+		 
+		if($captcha_val != ''){
 
 			
 	  		$userdata["robot_verify"]	=1;
@@ -303,7 +301,9 @@ class Home extends CI_Controller {
 
 		 $captcha=$this->input->post("g-recaptcha-response");
         $secaptcha=$this->session->userdata("reg_captcha");
-		if($captcha!=$secaptcha){
+        echo $captcha; 
+		//if($captcha!=$secaptcha){
+        if($captcha ==''){
 					
 			echo "captcha_error";
 			exit;

@@ -458,7 +458,10 @@ if($this->session->userdata("mode")){
                         </li>
                       </ul>
                     </div>
-                    <div class="panel-body" id="graph_container" style="margin-top:30px;"></div> 
+                    <!--<div class="panel-body" id="graph_container" style="margin-top:30px;"></div>-->
+                    <div class="tradingview-widget-container" id="depth_chart">
+                      <div id="chartdiv"></div>
+                    </div>
                   </div>
                             </div>
                         </div>
@@ -491,7 +494,7 @@ if($this->session->userdata("mode")){
                                         <input id="buy_order_type" type="hidden" value="limit">
                                         <div class="form-group" id="buy_price_sec">
                                             <label id="classbuyprice">Price Per <?php echo $pair[1];?></label>
-                                            <input type="text" class="form-control" value="<?php echo number_format($sell_price,8); ?>"  onkeypress="return isNumberKey(event)" onkeyup="amount_calculation('buy');" id="buy_price" name="buy_price"  placeholder="<?php echo $pair[1];?>">
+                                            <input type="text" class="form-control" value="<?php echo number_format($sell_price,8,'.', ''); ?>"  onkeypress="return isNumberKey(event)" onkeyup="amount_calculation('buy');" id="buy_price" name="buy_price"  placeholder="<?php echo $pair[1];?>">
                                         </div>
                                         <div class="form-group">
                                             <label>Amount</label>
@@ -616,7 +619,7 @@ if($this->session->userdata("mode")){
                                         <input id="sell_order_type" type="hidden" value="limit"> 
                                          <div class="form-group" id="sell_price_sec">
                                             <label>Price Per <?php echo $pair[1];?></label>
-                                           <input type="text"  class="form-control"  onkeypress="return isNumberKey(event)" onkeyup="amount_calculation('sell');" id="sell_price" name="sell_price"  value="<?php echo number_format($buy_prrice,8); ?>" placeholder="<?php echo $pair[1];?>">
+                                           <input type="text"  class="form-control"  onkeypress="return isNumberKey(event)" onkeyup="amount_calculation('sell');" id="sell_price" name="sell_price"  value="<?php echo number_format($buy_prrice,8,'.', ''); ?>" placeholder="<?php echo $pair[1];?>">
                                         </div> 
                                         <div class="form-group" >
                                             <label id="classsellprice">Amount</label>
@@ -872,6 +875,181 @@ var first_id              = "<?php echo isset($pair[0])?currency_id($pair[0]):''
 var second_id              = "<?php echo isset($pair[1])?currency_id($pair[1]):''; ?>";
 
 var pair_user_id = "<?php echo $pair_details->id.'_'.user_id(); ?>";
+var pair_name = "";
+
+var getcurn="<?php echo $pair[0];?>_<?php echo $pair[1];?>";
+var res = getcurn.split("_");
+var concurncy=res[1]+"_"+res[0];
+var tradingView = null;
+
+
+var url =base_url+'trade/tradechart/'+pair_id+'/trade';
+
+
+alert(url);
+
+
+//chart.data;
+
+var data2 = [];
+
+//var url="https://bitonehk.com/Trade/BinanceAPI/ETHBTC/1";
+
+$.getJSON(url, function(data){
+
+
+
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+chart.paddingRight = 20;
+
+chart.dateFormatter.inputDateFormat = "YYYY-MM-dd";
+
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.grid.template.location = 0;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.tooltip.disabled = true;
+
+var series = chart.series.push(new am4charts.CandlestickSeries());
+series.dataFields.dateX = "date";
+series.dataFields.valueY = "close";
+series.dataFields.openValueY = "open";
+series.dataFields.lowValueY = "low";
+series.dataFields.highValueY = "high";
+series.simplifiedProcessing = true;
+series.tooltipText = "Open:${openValueY.value}\nLow:${lowValueY.value}\nHigh:${highValueY.value}\nClose:${valueY.value}";
+
+chart.cursor = new am4charts.XYCursor();
+
+// a separate series for scrollbar
+var lineSeries = chart.series.push(new am4charts.LineSeries());
+lineSeries.dataFields.dateX = "date";
+lineSeries.dataFields.valueY = "close";
+// need to set on default state, as initially series is "show"
+lineSeries.defaultState.properties.visible = false;
+
+// hide from legend too (in case there is one)
+lineSeries.hiddenInLegend = true;
+lineSeries.fillOpacity = 0.5;
+lineSeries.strokeOpacity = 0.5;
+
+var scrollbarX = new am4charts.XYChartScrollbar();
+scrollbarX.series.push(lineSeries);
+chart.scrollbarX = scrollbarX;
+
+chart.data =data;
+  
+
+});
+
+
+
+ 
+
+
+  /*var obj1 = data2;
+
+var obj = JSON.stringify(obj1);
+
+alert(obj);
+
+console.log(obj);*/
+
+         
+
+
+
+
+
+   // alert(JSON.stringify(dat));
+   //chart.data2;
+
+
+/*function setTradingView(interval, binanceParam) {
+  if(tradingView != null) {
+    //表示中の場合は削除する
+    tradingView.remove();
+    tradingView = null;
+  }
+
+  tradingView = new TradingView.widget({
+    //width:650,
+    //height:430,
+    autosize:true,
+    fullscreen: false,
+    interval: interval,
+    symbol: concurncy,
+    theme: "Dark",
+    //style: "1",
+    toolbar_bg: '#000000',
+    enable_publishing: false,
+    allow_symbol_change: true,
+    container_id: "tv_chart_container",
+    datafeed: new Datafeeds.UDFCompatibleDatafeed("https://localhost/livecode/Trade/Tradingview/"+res[0]+res[1]+'/'+1),
+    library_path:"https://localhost/livecode/assets/frontend/js/charting_library/",
+    locale: "en",
+    drawings_access: { type: 'black', tools: [ { name: "Regression Trend" } ] },
+    //disabled_features: ["use_localstorage_for_settings","left_toolbar",'header_screenshot','header_fullscreen_button','display_market_status','header_indicators','header_undo_redo','header_compare','scales_context_menu','compare_symbol','header_resolutions'],//,'header_resolutions'
+    disabled_features: ["use_localstorage_for_settings","left_toolbar",'header_screenshot','header_fullscreen_button','display_market_status','header_indicators','header_undo_redo','header_compare','scales_context_menu','compare_symbol','header_settings','header_resolutions'],
+    //enabled_features: ["adaptive_logo"],
+    overrides: {
+        "mainSeriesProperties.style": 1,
+        "symbolWatermarkProperties.color" : "#944",
+        "volumePaneSize": "large"
+    },
+    debug: false,
+    time_frames: [{
+      "text":"1m","resolution":"180","description":"1 minute"
+    },{
+      "text":"5m","resolution":"300","description":"5 minute"
+    },{
+      "text":"15m","resolution":"2D","description":"15 minute"
+    },{
+      "text":"30m","resolution":"4D","description":"30 minute"
+    },{
+      "text":"1h","resolution":"1W","description":"1 hour"
+    },{
+      "text":"1d","resolution":"6M","description":"1 day"
+    },{
+      "text":"1w","resolution":"3Y","description":"1 week"
+    },{
+      "text":"1m","resolution":"6Y","description":"1 month"
+    }],
+    favorites: {
+        intervals: ["1","5","15","30","60","D","W","M"]
+    }
+  });
+}
+
+$(function () {
+  //画面表示時のTradingView表示
+  setTradingView("1", "1");
+});
+
+$(document).on('change','.fx',function() {
+  //表示単位変更時の表示
+  if(this.value != 0) {
+    setTradingView(this.value, this.value);
+  }
+});
+
+$(document).on('click','.fxclick',function() {
+  //1D, 1W, 1Mボタンクリック時の表示
+  setTradingView(this.value.slice(1, 2), this.value);
+  //先頭のデータに選択状態を移動
+  $(".custom_interval").find("span").removeClass("selected");
+  $(this).parent().addClass("selected");
+});
+
+
+$(function () {  
+    $("#myiframe").load(function () {                        
+        frames["myframe"].document.body.innerHTML = htmlValue;
+    });
+}); */
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>

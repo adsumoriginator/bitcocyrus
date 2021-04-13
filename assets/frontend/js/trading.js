@@ -3242,6 +3242,8 @@ $(function () {
 
 
 		var url =base_url+'trade/tradechart/'+pair_id+'/trade';
+
+		//alert(url);
 		$.getJSON(url , function (data) {
 			// split the data set into ohlc and volume
 			var ohlc = [],sma = [],ema = [],ema1 = [],volume = [],dataLength = data.length,

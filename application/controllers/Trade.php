@@ -102,7 +102,17 @@ public function trade($pair_symbol='')
 	$this->load->view('front/trade/trade', $data);
 }
 
+function Tradingview()
+{
 
+	$config =
+
+	'{"supports_search":true,"supports_group_request":false,"supports_marks":true,"supports_timescale_marks":true,"supports_time":true,"exchanges":[{"value":"","name":"All Exchanges","desc":""},{"value":"Bitcocyrus","name":"Bitcocyrus","desc":"Bitcocyrus"},{"value":"NYSE","name":"NYSE","desc":"NYSE"},{"value":"NCM","name":"NCM","desc":"NCM"},{"value":"NGM","name":"NGM","desc":"NGM"}],"symbols_types":[{"name":"All types","value":""},{"name":"Stock","value":"stock"},{"name":"Index","value":"index"}],"supported_resolutions":["1","5","15","30","60","D","W","M"]}';
+
+
+	echo $config;
+
+}
 
 
 
@@ -458,6 +468,99 @@ public function gettradeopenOrders($type,$pair_id)
 	return $result;
 }
 
+/*function tradechart1($pair="")
+{
+
+	
+//echo '[ [1524700800000,24.96,25.13,24.51,24.74,161504168] ]';
+
+//exit;
+/*
+json_decode($data);
+exit;
+
+
+echo '[ [1524700800000,24.96,25.13,24.51,24.74,161504168] ]';
+
+
+exit;
+
+
+  $type       = "day";
+        $end_date   = date("Y-m-d H:i:s");
+        $start_date = date('Y-m-d H:i:s', strtotime($end_date . '- 180 days'));
+        $start      = strtotime($start_date);
+        $end        = strtotime($end_date);
+        $interval   = 24;
+        $int        = 60*60*$interval;
+        for($i= $start;$i<= $end; $i += $int ) {
+            $test[] = date('Y-m-d H:i:s',$i);
+        }
+        //echo "<pre>";
+      // print_r($test);die;
+        $chart="";
+            foreach($test as $taken) {
+                $exp            = explode(' ',$taken);
+                $datetime       = strtotime($taken)*1000;
+                $chartResult    = $this->trade_model->forLowHighchart_pair($taken,$int,$type,$pair); 
+                $low            = $chartResult->low; 
+                $high           = $chartResult->high;
+                $open           = $chartResult->open;
+                $close          = $chartResult->close; 
+                $volume          = $chartResult->volume; 
+                if($low=='') { $low = 0; } 
+                if($high=='') { $high = 0; } 
+                if($open=='') { $open = 0; } 
+                if($close=='') { $close = 0; } 
+                if($volume=='') { $volume = 0; } 
+                	$format 		= 8;
+
+              $chart.='['.$datetime.','.str_replace(',','',number_format($open,$format)).','.str_replace(',','',number_format($high,$format)).','.str_replace(',','',number_format($low,$format)).','.str_replace(',','',number_format($close,$format)).','.str_replace(',','',number_format($volume,$format)).'],';
+        }
+
+       // echo json_encode($todosPedidos);
+        echo "[".trim($chart,",")."]";
+        exit;
+
+
+	$timestamp = strtotime('today midnight');
+	$end_date = date("Y-m-d H:i:s",$timestamp);
+	$start_date = date('Y-m-d H:i:s', strtotime($end_date . '- 180 days'));
+	$start 	= strtotime($start_date);
+	$end 	= strtotime($end_date);
+	$interval = 1;
+	$int = 24*60*60*$interval;
+	$chart="";
+	$t=1;
+	for($i= $start;$i<= $end; $i += $int )
+	{
+		$taken = date('Y-m-d H:i:s',$i);
+		//date_default_timezone_set('UTC');
+		$exp 		= explode(' ',$taken);
+		$curdate 	= $exp[0];
+		$time 		= $exp[1];
+		$tdtime 	= date("H:i",strtotime($taken));
+		$datetime 	= strtotime($taken)*1000;
+		//$destination = date('Y-m-d H:i:s', strtotime($taken . ' +1 hours'));
+		$destination = date('Y-m-d H:i:s', strtotime($taken . ' +24 hours'));
+		$names  = array('filled', 'partially');
+		$where_in=array('status',$names);
+		$chartResult = $this->trade_model->getTableData('coin_order',array('datetime >= '=>$taken,'datetime <= '=>$destination,'pair'=>$pair),'SUM(Amount) as volume,MIN(Price) as low,MAX(Price) as high','','','','','','','','',$where_in)->row();
+		if($chartResult)
+		{
+			$volume 	= $chartResult->volume;
+			$low 		= $chartResult->low; 
+			$high	 	= $chartResult->high;
+			if($volume==''){$volume = 0;} 
+			if($low==''){$low = 0;} 
+			if($high==''){$high = 0;} 
+			$chart.='['.$datetime.','.$low.','.$high.','.$low.','.$volume.'],';
+		}
+	}
+	echo "[".trim($chart,",")."]";
+}*/
+
+
 function tradechart($pair="")
 {
 
@@ -484,34 +587,62 @@ exit;
         $interval   = 24;
         $int        = 60*60*$interval;
         for($i= $start;$i<= $end; $i += $int ) {
-            $test[] = date('Y-m-d H:i:s',$i);
+            $test[] = date('Y-m-d',$i);
         }
         //echo "<pre>";
        //print_r($test);die;
         $chart="";
             foreach($test as $taken) {
                 $exp            = explode(' ',$taken);
-                $datetime       = strtotime($taken)*1000;
+                $datetime       = $taken;
                 $chartResult    = $this->trade_model->forLowHighchart_pair($taken,$int,$type,$pair); 
                 $low            = $chartResult->low; 
                 $high           = $chartResult->high;
                 $open           = $chartResult->open;
                 $close          = $chartResult->close; 
                 $volume          = $chartResult->volume; 
-                if($low=='') { $low = 0; } 
-                if($high=='') { $high = 0; } 
-                if($open=='') { $open = 0; } 
-                if($close=='') { $close = 0; } 
-                if($volume=='') { $volume = 0; } 
+                if($low=='') { $low = "0"; } 
+                if($high=='') { $high = "0"; } 
+                if($open=='') { $open = "0"; } 
+                if($close=='') { $close = "0"; } 
+                if($volume=='') { $volume = "0"; } 
                 	$format 		= 8;
 
               $chart.='['.$datetime.','.str_replace(',','',number_format($open,$format)).','.str_replace(',','',number_format($high,$format)).','.str_replace(',','',number_format($low,$format)).','.str_replace(',','',number_format($close,$format)).','.str_replace(',','',number_format($volume,$format)).'],';
 
-        
+      
+
+        	 $todosPedidos[] = array(
+        	 	"date"		=> $datetime,
+        	 	"open"      => $open,
+                "low"       => $low,
+                "high"  	=> $high,
+                "close"   	=> $close,
+                "volume"    => $volume
+            );
 
 
         }
-        echo "[".trim($chart,",")."]";
+
+        //echo $variables;
+        echo json_encode($todosPedidos);
+        //echo "[".trim($chart,",")."]";
+       /* echo '{
+	supports_search: true,
+	supports_group_request: false,
+	supports_marks: true,
+	exchanges: [
+		{value: "", name: "All Exchanges", desc: ""},
+		{value: "XETRA", name: "XETRA", desc: "XETRA"},
+		{value: "NSE", name: "NSE", desc: "NSE"}
+	],
+	symbolsTypes: [
+		{name: "All types", value: ""},
+		{name: "Stock", value: "stock"},
+		{name: "Index", value: "index"}
+	],
+	supportedResolutions: [ "1", "15", "30", "60", "D", "2D", "3D", "W", "3W", "M", "6M" ]
+};';*/
 
 
         exit;

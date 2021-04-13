@@ -192,7 +192,7 @@ $('#register').validate({
             success: function(response) {      
 
 
-
+                alert(response);
               $('#register_button').html('submit');
 
                if(response=="captcha_error"){

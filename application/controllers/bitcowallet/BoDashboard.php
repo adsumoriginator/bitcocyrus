@@ -43,6 +43,7 @@ class BoDashboard extends CI_Controller {
 			return $bal;
 		}
 		else if($currency == 'USDT'){
+			
 			$data=get_cn_data("USDT");
 			$bitcoin_username 		= insep_decode($data['user']);	
 			$bitcoin_password 		= insep_decode($data['password']);

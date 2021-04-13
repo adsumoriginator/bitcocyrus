@@ -45,7 +45,7 @@ if(!$this->session->userdata("home_numeric_verify")){
 <!-- font css -->
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
 <link href="assets/frontend/css/font-awesome.min.css" rel="stylesheet">
-<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 
 <style type="text/css">
   .error {
@@ -138,8 +138,7 @@ text-align: center;
     
   </div>
 <input type="hidden" name="base_url" id="base_url" value="<?php echo base_url(); ?>">
-
- <div class="g-recaptcha" data-callback="recaptchaCallback"  data-sitekey="6Lc2NG8UAAAAAGYBWICrLg7-8Tv5mMiIx8aAXwrZ" required >
+ <div class="g-recaptcha" data-callback="recaptchaCallback"  data-sitekey="6LdxhHgUAAAAAFfiRqxCcotnYaDmhekuaLljDt1D" required >
                             </div>
                             <p id="recaptcha"></p>
 
@@ -194,6 +193,8 @@ var url= base_url+"home/verify_home";
             data: {'captcha_response': captcha_response},
                        
             success: function(response) {
+
+              alert(response);
                  
                 if(response=="invalid"){
                  

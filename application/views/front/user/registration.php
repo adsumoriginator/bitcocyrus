@@ -185,9 +185,13 @@
 
 function recaptchaCallback() {
 
+  alert ();
+
   var captcha_response = grecaptcha.getResponse();
 
   captcha_response = captcha_response.length;
+
+  alert(captcha_response);
 
   $("#toggleButton5").val(captcha_response);
 

@@ -39,7 +39,8 @@
             width: 40%;
         }
     </style>  
-    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>  
+         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script src="assets/frontend/js/jquery.min.js"></script> 
 </head>
 <body>
@@ -51,9 +52,18 @@
     <h1>COMING SOON</h1>
     <hr>
      <button name="captcha_button" id="captcha_response">Verify</button>
+           <div class="g-recaptcha" data-sitekey="your_site_key"></div>
+
     <div class="g-recaptcha" data-callback="recaptchaCallback"  data-sitekey="6Lc2NG8UAAAAAGYBWICrLg7-8Tv5mMiIx8aAXwrZ" required >
                             </div>
                             <p id="recaptcha"></p>
+
+                            <script id="chatBroEmbedCode">
+/* Chatbro Widget Embed Code Start */
+function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','//www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
+/* Chatbro Widget Embed Code End */
+ChatbroLoader({encodedChatId: '22iZX'});
+</script>
     <!-- <p>35 days left</p> -->
   </div>
   <!-- <div class="bottomleft">
@@ -61,6 +71,14 @@
   </div> -->
 </div>
 </body>
+
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'cryptocyfer/cryptocyfer'
+  };
+</script>
+
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
 <script type="text/javascript" language="javascript">
 
 function recaptchaCallback() {

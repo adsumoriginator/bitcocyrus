@@ -63,6 +63,11 @@
 
 <script src="assets/frontend/js/wow.min.js"></script>
 
+<script type="text/javascript" src="assets/frontend/js/charting_library/charting_library.min.js"></script>
+<script type="text/javascript" src="assets/frontend/js/datafeeds/udf/dist/polyfills.js"></script>
+<script type="text/javascript" src="assets/frontend/js/datafeeds/udf/dist/bundle.js"></script>
+
+
 <?php if(!empty($main_js)):?>
 
   <script src="<?php echo base_url();?>assets/admin/plugins/validate/jquery.validate.js" type="text/javascript"></script>
